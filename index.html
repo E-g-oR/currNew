@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="img/icons/dollar.png">
+  <link rel="icon" href="img/icons/favico.svg">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyCurrencies</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"> </script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCAR621q61sl26ra4DgOlGOPx7nsPyofeM",
+      authDomain: "my-currency-fin.firebaseapp.com",
+      projectId: "my-currency-fin",
+      storageBucket: "my-currency-fin.appspot.com",
+      messagingSenderId: "1052943938094",
+      appId: "1:1052943938094:web:8cdfe05911a839b91665bf"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" defer></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+
+
+  <script>
+    const template = (data) => {
+      return `<a class="waves-effect waves-light btn">${data.amount} ${data.base}</a>`
+    }
+    const fetchData = (address) => {
+      fetch(address)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          const container = document.querySelector('.currencies')
+          container.insertAdjacentHTML("beforeend", template(data))
+        })
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      // fetchData('https://api.frankfurter.app/latest?from=USD')
+      const button = document.querySelector('#top-menu')
+      button.addEventListener('click', () => {
+        console.log('click');
+      })
+    })
+  </script>
+
+
+</head>
+
+<body>
+
+  <nav class="indigo">
+    <div class="nav-wrapper container">
+      <a href="#!" class="logo">Logo</a>
+      <a id="top-menu" class="btn-floating btn-large btn-flat waves-effect waves-light transparent"><i
+          class="material-icons">expand_more</i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <a class="waves-effect waves-light  btn grey darken-3"><i class="material-icons left">cloud</i>button</a>
+  </div>
+
+
+
+  <div class="popup hidden">
+    <form class="card grey darken-4 z-depth-5">
+      <div class="card-content white-text">
+        <span class="card-title">Card Title</span>
+        <div class="input-field">
+          <input class="white-text" autocomplete="off" id="value" type="text" class="validate">
+          <label for="value">Value</label>
+        </div>
+        <div class="input-field input-radio">
+          <p>
+            <label>
+              <input name="group1" type="radio" checked />
+              <span>USD</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input name="group1" type="radio" />
+              <span>EUR</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input name="group1" type="radio" />
+              <span>RUB</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input name="group1" type="radio" />
+              <span>BYN</span>
+            </label>
+          </p>
+        </div>
+      </div>
+      <div class="card-action">
+        <a class="waves-effect waves-light btn indigo">Add saving</a>
+        <a class="waves-effect waves-red btn-flat white-text">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+
+</body>
+
+</html>

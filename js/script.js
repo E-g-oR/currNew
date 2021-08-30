@@ -16,8 +16,29 @@ const URLRatesList = [
   // 'https://blockchain.info/ticker',                 //? Bitcoin
 ];
 const getTemplate = (curInfo) => {
-  const component = `<a class="waves-effect waves-light grey darken-3 btn-large currency">${curInfo.Cur_Scale} ${curInfo.Cur_Abbreviation} = ${curInfo.Cur_OfficialRate} BYN</a>`
-  $curList.insertAdjacentHTML("beforeend", component)
+  const currency = document.createElement('div')
+  currency.className = 'waves-effect waves-light currency card grey darken-3'
+  const currencyInnerHTML = `
+  <div class="currency__body">
+    <div class="currency__img ">
+      <img src="img/turkey.svg" alt="флаг">
+    </div>
+    <div class="currency__text ">
+      <span class="currency__title card-title">Валюта: ${curInfo.Cur_Scale} ${curInfo.Cur_Abbreviation}</span>
+      <span class="currency__caption">Оффициальный курс: ${curInfo.Cur_OfficialRate} BYN</span>
+    </div>
+  </div>
+  <div class="currency__chart " id="chart">
+    ГРАФИК
+  </div>
+  `
+  currency.insertAdjacentHTML("afterbegin", currencyInnerHTML)
+
+  currency.addEventListener('click', (e) => {
+    currency.classList.toggle('showChart')
+  })
+
+  $curList.insertAdjacentElement("beforeend", currency)
 }
 const fetchData = async (address) => {
   const response = await fetch(address)
@@ -25,6 +46,19 @@ const fetchData = async (address) => {
   getTemplate(data)
 }
 
-URLRatesList.forEach(src => {
-  fetchData(src)
+
+
+const init = () => {
+  const listCurrencies = document.querySelectorAll('.currency')
+  for (const item of listCurrencies) {
+    console.log(item);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  init()
+  URLRatesList.forEach(src => {
+    fetchData(src)
+  })
 })

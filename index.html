@@ -39,27 +39,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
 
 
-  <script>
-    const template = (data) => {
-      return `<a class="waves-effect waves-light btn">${data.amount} ${data.base}</a>`
-    }
-    const fetchData = (address) => {
-      fetch(address)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          const container = document.querySelector('.currencies')
-          container.insertAdjacentHTML("beforeend", template(data))
-        })
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      // fetchData('https://api.frankfurter.app/latest?from=USD')
-      const button = document.querySelector('#top-menu')
-      button.addEventListener('click', () => {
-        console.log('click');
-      })
-    })
-  </script>
+  <script src="js/script.js" defer></script>
 
 
 </head>
@@ -74,13 +54,53 @@
     </div>
   </nav>
 
-  <div class="container">
+  <div class="row">
+    <div class="container">
+      <ul class="tabs grey darken-3">
+        <li class="tab col s3"><a class="active" href="#test1">Official rates</a></li>
+        <li class="tab col s3"><a href="#test2">Savings</a></li>
+      </ul>
+      <div id="test1" class="col s12">
+        <div class="card grey darken-4">
+          <div class="card-image">
+            <img
+              src="https://images.unsplash.com/photo-1630209642854-432d7f3f0e52?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
+            <span class="card-title">Official rates tab</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+          </div>
+        </div>
+      </div>
+      <div id="test2" class="col s12">
+        <div class="card grey darken-4">
+          <div class="card-image">
+            <img
+              src="https://images.unsplash.com/photo-1630241040420-65ac6e542db8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1065&q=80">
+            <span class="card-title">Savings <table></table></span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="container">
     <a class="waves-effect waves-light  btn grey darken-3"><i class="material-icons left">cloud</i>button</a>
   </div>
 
 
-
+  <!-- ! всплывающая форма -->
   <div class="popup hidden">
     <form class="card grey darken-4 z-depth-5">
       <div class="card-content white-text">
@@ -122,6 +142,7 @@
       </div>
     </form>
   </div>
+  <!-- ! конец всплывающая форма -->
 
 
 </body>

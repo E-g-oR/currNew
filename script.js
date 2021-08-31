@@ -6,7 +6,7 @@ const URLRatesList = [
   'https://www.nbrb.by/api/exrates/rates/451',      //? Евро
   'https://www.nbrb.by/api/exrates/rates/431',      //? Доллар США
   'https://www.nbrb.by/api/exrates/rates/456',      //? Российский рубль
-  'https://www.nbrb.by/api/exrates/rates/468',      //? Тайский бат
+  // 'https://www.nbrb.by/api/exrates/rates/468',      //? Тайский бат
   'https://www.nbrb.by/api/exrates/rates/460',      //? Турецкая лира
   'https://www.nbrb.by/api/exrates/rates/426',      //? Швейцарский франк
   'https://www.nbrb.by/api/exrates/rates/429',      //? Фунт стерлингов
@@ -64,7 +64,7 @@ const getTemplate = (curInfo, parent, period) => {
   const currencyInnerHTML = `
   <div class="currency__body">
     <div class="currency__img ">
-      <img src="img/turkey.svg" alt="флаг">
+      <img src="img/${curInfo.Cur_Abbreviation}.svg" alt="${curInfo.Cur_Name}">
     </div>
     <div class="currency__text ">
       <span class="currency__title card-title">Валюта: ${curInfo.Cur_Scale} ${curInfo.Cur_Abbreviation}</span>
@@ -119,7 +119,9 @@ const getTemplate = (curInfo, parent, period) => {
         const config = {
           type: 'line',
           data: chartData,
-          options: {}
+          options: {
+            radius: 2
+          }
         };
         var myChart = new Chart(
           document.getElementById(`chart${curInfo.Cur_Abbreviation}`),

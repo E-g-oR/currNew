@@ -43,7 +43,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="script.js" defer></script>
+  <script src="js/script.js" defer></script>
   <!-- ! end scripts -->
 
 </head>
@@ -59,7 +59,7 @@
   </nav>
 
   <div class="row">
-    <div class="container">
+    <div class="container small">
       <ul class="tabs grey darken-3">
         <li class="tab col s3"><a class="active" href="#curList">Official rates</a></li>
         <li class="tab col s3"><a href="#test2">Savings</a></li>
@@ -68,28 +68,49 @@
 
 
       </div>
-      <div id="test2" class="col s12">
-        <div class="card grey darken-4">
-          <div class="card-image">
-            <img
-              src="https://images.unsplash.com/photo-1630241040420-65ac6e542db8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1065&q=80">
-            <span class="card-title">Savings <table></table></span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
+      <div id="test2">
+        <div class="saving-list">
+          <ul>
+            <li class="saving-list__item saving waves-effect waves-light grey darken-3">
+              <span class="amount">
+                120
+              </span>
+              <span class="currency-name">
+                EUR
+              </span>
+            </li>
+            <li class="saving-list__item saving waves-effect waves-light grey darken-3">
+              <span class="amount">
+                570
+              </span>
+              <span class="currency-name">
+                USD
+              </span>
+            </li>
+            <li class="saving-list__item saving waves-effect waves-light grey darken-3">
+              <span class="amount">
+                300
+              </span>
+              <span class="currency-name">
+                BYN
+              </span>
+            </li>
+            <li class="saving-list__item saving waves-effect waves-light grey darken-3">
+              <span class="amount">
+                17000
+              </span>
+              <span class="currency-name">
+                RUB
+              </span>
+            </li>
+          </ul>
         </div>
+        <a class="waves-effect waves-light  btn indigo"><i class="material-icons left">add</i>Add saving</a>
       </div>
     </div>
   </div>
 
-  <div class="container">
-    <a class="waves-effect waves-light  btn grey darken-3"><i class="material-icons left">cloud</i>button</a>
-  </div>
+
 
 
   <!-- ! всплывающая форма -->
